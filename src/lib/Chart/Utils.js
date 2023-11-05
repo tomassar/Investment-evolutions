@@ -7,8 +7,7 @@ const createGradient = (ctx, color) => {
 };
   
 // Factored out gradient creation.
-const createGradients = () => {
-    const canvas = document.createElement('canvas');
+const createGradients = (canvas) => {
     const ctx = canvas.getContext('2d');
     return [createGradient(ctx, 'rgba(150, 122, 192, 0.2)'), createGradient(ctx, 'rgba(150, 122, 192, 0.3)')];
 };
@@ -44,13 +43,13 @@ export const formatTickValue = (value, index, ticks) => {
     return `$${value.toLocaleString("es-CL")}`;
 };
   
-export const createChartDatasets = (dataArray) => {
+export const createChartDatasets = (dataArray, canvas) => {
     const chartLabels = dataArray.map(item => formatDateLabel(item.date));
     const chartDataValues = dataArray.map(item => Math.floor(item.portfolioValue));
     const contributions = dataArray.map(item => item.contributions);
 
     // Create gradients for chart datasets.
-    const [firstGradient, secondGradient] = createGradients();
+    const [firstGradient, secondGradient] = createGradients(canvas);
 
     return {
         labels: chartLabels,

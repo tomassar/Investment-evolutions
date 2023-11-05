@@ -1,16 +1,24 @@
 "use client"
 
-import InvestmentChart from './InvestmentChart';
+//import InvestmentChart from './InvestmentChart';
 import React, { useEffect, useState } from 'react';
 import { db } from '../lib/firebase';
 import {doc, onSnapshot } from 'firebase/firestore';
 import { ArrowDownIcon } from '@/assets/ArrowDownIcon';
 import { ArrowUpIcon } from '@/assets/ArrowUpIcon';
+import dynamic from 'next/dynamic';
+
+// Import the InvestmentChart component without server-side rendering
+const InvestmentChart = dynamic(
+    () => import('./InvestmentChart'),
+    { ssr: false }
+);
+
 function Dashboard() {
     const [data, setData] = useState([])
     const [period, setPeriod] = useState("year")
 
-    useEffect(() => {
+    useEffect(() => {        
         const unsubscribe = onSnapshot(doc(db, 'investmentEvolutions', 'user1'), (doc) => {
             const data = doc.data();
             let dataArray = data.array;

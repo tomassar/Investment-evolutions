@@ -9,14 +9,15 @@ import {createChartDatasets} from '../lib/Chart/Utils';
 
 Chart.register(...registerables, verticalLinePlugin);
 
-const InvestmentChart = ({ data }) => {
+const InvestmentChart = ({ data}) => {
   const [chartData, setChartData] = useState({
     labels: [],
     datasets: []
   });
 
   // useMemo to avoid unnecessary calculations on every render.
-  const chartDatasets = useMemo(() => createChartDatasets(data), [data]);
+  const canvas = document.createElement('canvas');
+  const chartDatasets = useMemo(() => createChartDatasets(data, canvas), [data]);
 
   useEffect(() => {
     setChartData(chartDatasets);  
