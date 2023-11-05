@@ -9,6 +9,8 @@ import {createChartDatasets} from '../lib/Chart/Utils';
 
 Chart.register(...registerables, verticalLinePlugin);
 
+/* The InvestmentChart component renders a line chart using Chart.js to visualize investment data.
+It takes a 'data' prop, which contains the investment data to be displayed. */
 const InvestmentChart = ({ data}) => {
   const [chartData, setChartData] = useState({
     labels: [],
