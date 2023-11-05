@@ -19,10 +19,10 @@ const formatDateLabel = (timestamp) => {
 };
 
 // Creates datasets for the chart
-const createDataset = (label, data, gradient) => ({
+const createDataset = (label, data, gradient, borderColor) => ({
     label,
     data,
-    borderColor: 'rgb(150, 122, 192)',
+    borderColor: borderColor,
     fill: true,
     backgroundColor: gradient,
     tension: 0.1,
@@ -54,8 +54,8 @@ export const createChartDatasets = (dataArray, canvas) => {
     return {
         labels: chartLabels,
         datasets: [
-            createDataset('Investment Over Time', chartDataValues, firstGradient),
-            createDataset('Deposited Over Time', contributions, secondGradient)
+            createDataset('Investment Over Time', chartDataValues, firstGradient, 'rgb(150, 122, 192)'),
+            createDataset('Deposited Over Time', contributions, secondGradient, '#daafa1'),
         ],
     };
 };

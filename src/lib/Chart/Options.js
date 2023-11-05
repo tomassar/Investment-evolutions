@@ -6,12 +6,12 @@ export const chartOptions = {
       x: {
         ticks: {
           autoSkip: true,
-          maxTicksLimit: 5
+          maxTicksLimit: 5.1,
         }
       },
       y: {
         ticks: {
-          maxTicksLimit: 5,
+          maxTicksLimit: 5.1,
           // Improved formatting function for readability.
           callback: function(value, index, ticks) {
             // Handle formatting based on window size and value.
